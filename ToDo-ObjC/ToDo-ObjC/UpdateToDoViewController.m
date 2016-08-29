@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _toDoNameTextField.text = _toDo.name;
     // Do any additional setup after loading the view.
 }
 
@@ -34,6 +35,10 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)completeButtonPressed:(UIButton *)sender {
+    _toDo.isComplete = YES;
+    [self.delegate updateToDo:_toDo atIndex:_indexPath];
+}
 
 - (IBAction)updateToDoButtonPressed:(UIButton *)sender {
     _toDo.name = _toDoNameTextField.text;

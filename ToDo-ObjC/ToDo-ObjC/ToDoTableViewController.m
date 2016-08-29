@@ -54,6 +54,15 @@
     return [_todos count];
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    ToDo *toDoInCell = [_todos objectAtIndex:indexPath.row];
+    cell.textLabel.text = toDoInCell.name;
+    if (toDoInCell.isComplete) {
+        cell.backgroundColor = [UIColor colorWithRed:60/255.0 green:179/255.0 blue:113/255.0 alpha:1.0];
+        cell.textLabel.textColor = [UIColor whiteColor];
+    }
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
